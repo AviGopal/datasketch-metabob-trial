@@ -8,7 +8,6 @@ from datasketch.minhash import MinHash
 from datasketch.weighted_minhash import WeightedMinHashGenerator
 
 
-
 def fake_redis(**kwargs):
     redis = mockredis.mock_redis_client(**kwargs)
     redis.connection_pool = None
