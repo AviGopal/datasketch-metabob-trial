@@ -225,7 +225,7 @@ class LeanMinHash(MinHash):
         self._initialize_slots(seed, hashvalues)
 
     def __hash__(self):
-        return hash((self.seed, tuple(self.hashvalues)))
+        return hash([self.seed, tuple(self.hashvalues)])
 
     @classmethod
     def union(cls, *lmhs):

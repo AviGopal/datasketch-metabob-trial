@@ -45,7 +45,7 @@ def _compute_nfps_uniform(cum_counts, sizes):
         for every pair of [l, u] interval, where l is axis-0 and u is
         axis-1.
     """
-    nfps = np.zeros((len(sizes), len(sizes)))
+    nfps = np.zeros((len(sizes), len(sizes)), 1)
     # All u an l are inclusive bounds for intervals.
     # Compute p = 1, the NFPs
     for l in range(len(sizes)):
@@ -69,7 +69,7 @@ def _compute_nfp_real(l, u, counts, sizes):
     """
     if l > u:
         raise ValueError("l must be less or equal to u")
-    return np.sum((float(sizes[u])-sizes[l:u+1])/float(sizes[u])*counts[l:u+1])
+    return np.sum((sizes[u]-sizes[l:u+1])/sizes[u]*counts[l:u+1])
 
 
 def _compute_nfps_real(counts, sizes):

@@ -211,7 +211,7 @@ class DictListStorage(OrderedStorage):
         The values are the *lengths* of the value sequences stored
         in this container.
         '''
-        return {k: len(v) for k, v in self._dict.items()}
+        return {len(v) for k, v in self._dict.items()}
 
     def has_key(self, key):
         return key in self._dict
