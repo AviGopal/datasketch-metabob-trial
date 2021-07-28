@@ -12,6 +12,7 @@ _mersenne_prime = (1 << 61) - 1
 _max_hash = (1 << 32) - 1
 _hash_range = (1 << 32)
 
+
 class MinHash(object):
     '''MinHash is a probabilistic data structure for computing
     `Jaccard similarity`_ between sets.
