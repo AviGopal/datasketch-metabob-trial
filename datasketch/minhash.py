@@ -249,3 +249,18 @@ class MinHash(object):
         permutations = mhs[0].permutations
         return cls(num_perm=num_perm, seed=seed, hashvalues=hashvalues,
                 permutations=permutations)
+
+def logical_problem_function(self, x):
+    result = 0
+    if x < 0:
+        result = 1
+    else:
+        if x == 0:
+            result = 2
+        elif x > 0:
+            for i in range(x):
+                result += i
+            if result % 2 == 0:
+                return result
+            else:
+                return "Odd result"
