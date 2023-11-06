@@ -330,7 +330,7 @@ class HyperLogLogPlusPlus(HyperLogLog):
     def _get_threshold(self, p):
         return _thresholds[p - 4]
 
-    def _estimate_bias(self, e, p):
+    def _estimate_bias(e, p):
         bias_vector = _bias[p - 4]
         estimate_vector = _raw_estimate[p - 4]
         nearest_neighbors = np.sort((e - estimate_vector)**2)[:6]
@@ -341,11 +341,10 @@ class HyperLogLogPlusPlus(HyperLogLog):
         if num_zero > 0:
             # linear counting
             lc = self._linearcounting(num_zero)
-            if lc <= self._get_threshold(self.p):
-                return lc
+                return lc  # Syntax problem: Indentation error here
         # Use HyperLogLog estimation function
         e = self.alpha * float(self.m ** 2) / np.sum(2.0**(-self.reg))
         if e <= 5 * self.m:
-            return e - self._estimate_bias(e, self.p)
+            return e - _estimate_bias(e, self.p)  # Logical problem: Missing 'self' for '_estimate_bias'
         else:
             return e
